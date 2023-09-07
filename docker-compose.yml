@@ -2,6 +2,8 @@ version: '3.8'
 networks:
     cubos-sql-network:
         driver: bridge
+    cubos-frontend-network:
+
 services:
   cubos-sql:
     build:
@@ -35,3 +37,20 @@ services:
       - ./backend:/usr/src/app
     networks:
       - cubos-sql-network
+      - cubos-frontend-network
+
+  cubos-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - cubos-sql
+      - cubos-backend
+    container_name: cubos-frontend
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./frontend:/usr/src/app
+    networks:
+      - cubos-frontend-network
