@@ -18,3 +18,20 @@ services:
         - ./sql/logs:/var/log/postgresql
     networks:
       - cubos-sql-network
+
+  cubos-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - cubos-sql
+    container_name: cubos-backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    ports:
+      - 3000:3000
+    volumes:
+      - ./backend:/usr/src/app
+    networks:
+      - cubos-sql-network
