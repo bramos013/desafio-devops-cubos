@@ -1,0 +1,20 @@
+version: '3.8'
+networks:
+    cubos-sql-network:
+        driver: bridge
+services:
+  cubos-sql:
+    build:
+        context: ./sql
+        dockerfile: Dockerfile
+    container_name: cubos-sql
+    restart: on-failure
+    env_file:
+      - ./sql/.env
+    ports:
+        - 5432:5432
+    volumes:
+        - ./sql/data:/var/lib/postgresql/data
+        - ./sql/logs:/var/log/postgresql
+    networks:
+      - cubos-sql-network

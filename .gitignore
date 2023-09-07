@@ -1,0 +1,10 @@
+# Ignore all files in this directory
+.idea/
+.vscode/
+
+# Ignore .env file
+.env
+
+# Ignore Docker Volumes
+sql/data/
+sql/logs/
