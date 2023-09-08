@@ -24,3 +24,12 @@ resource "docker_image" "cubos-frontend" {
     dockerfile = "Dockerfile"
   }
 }
+
+resource "docker_image" "cubos-prometheus" {
+  name = "cubos-prometheus"
+
+    build {
+        context    = "../prometheus"
+        dockerfile = "Dockerfile"
+    }
+}

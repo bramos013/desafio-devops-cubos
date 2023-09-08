@@ -13,3 +13,7 @@ resource "docker_volume" "sql-init" {
     driver = "local"
 }
 
+resource "docker_volume" "prometheus-data" {
+    name = "cubos-prometheus-volume-data"
+    driver = "local"
+}
