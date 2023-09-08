@@ -1,26 +1,26 @@
 resource "docker_image" "cubos-sql" {
-  name = "terraform-cubos-sql"
+  name = "cubos-sql"
 
   build {
-    context    = "../../sql"
+    context    = "../sql"
     dockerfile = "Dockerfile"
   }
 }
 
 resource "docker_image" "cubos-backend" {
-  name = "terraform-cubos-backend"
+  name = "cubos-backend"
 
   build {
-    context    = "../../backend"
+    context    = "../backend"
     dockerfile = "Dockerfile"
   }
 }
 
 resource "docker_image" "cubos-frontend" {
-  name         = "terraform-cubos-frontend"
+  name = "cubos-frontend"
 
   build {
-    context    = "../../frontend"
+    context    = "../frontend"
     dockerfile = "Dockerfile"
   }
 }
