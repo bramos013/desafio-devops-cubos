@@ -4,9 +4,9 @@ resource "docker_container" "cubos-sql" {
   restart = "on-failure"
 
   env = [
-    "POSTGRES_USER=admin",
-    "POSTGRES_PASSWORD=secure_p4$$w0rd",
-    "POSTGRES_DB=cubos"
+    "POSTGRES_USER=${var.POSTGRES_USER}",
+    "POSTGRES_PASSWORD=${var.POSTGRES_PASSWORD}",
+    "POSTGRES_DB=${var.POSTGRES_DB}"
   ]
 
   networks_advanced {
@@ -35,11 +35,12 @@ resource "docker_container" "cubos-backend" {
   ]
 
   env = [
-    "user=admin",
-    "pass=secure_p4$$w0rd",
-    "host=cubos-sql",
-    "db_port=5432",
-    "database=cubos"
+
+    "user=${var.user}",
+    "pass=${var.pass}",
+    "host=${var.host}",
+    "db_port=${var.db_port}",
+    "database=${var.database}"
   ]
 
   networks_advanced {
@@ -71,8 +72,8 @@ resource "docker_container" "cubos-frontend" {
   }
 
   ports {
-    internal = 80
-    external = 80
+    internal = var.frontend_port
+    external = var.frontend_port
   }
 
   volumes {
