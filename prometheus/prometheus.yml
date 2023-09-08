@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'cubos-backend'
+    static_configs:
+      - targets: ['cubos-backend:3001']
+
+  - job_name: 'cubos-frontend'
+    static_configs:
+      - targets: ['cubos-frontend:80']
+
+  - job_name: 'cubos-sql'
+    static_configs:
+      - targets: ['cubos-sql:5432']

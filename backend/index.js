@@ -9,7 +9,7 @@ const pass = process.env.pass;
 const host = process.env.host;
 const db_port = Number(process.env.db_port);
 const database = process.env.database;
-const port = Number(process.env.PORT) || 3000;
+const port = Number(process.env.PORT) || 3001;
 
 const client = new PG.Client(
   `postgres://${user}:${pass}@${host}:${db_port}/${database}`
