@@ -4,7 +4,7 @@ resource "docker_container" "cubos-prometheus" {
   restart = "always"
 
   networks_advanced {
-    name = "monitoring-network"
+    name = docker_network.monitoring-network.name
   }
 
   ports {
@@ -55,7 +55,7 @@ resource "docker_container" "cubos-sql" {
   }
 
   networks_advanced {
-    name = "monitoring-network"
+    name = docker_network.monitoring-network.name
   }
 
   volumes {
@@ -94,7 +94,7 @@ resource "docker_container" "cubos-backend" {
   }
 
   networks_advanced {
-    name = "monitoring-network"
+    name = docker_network.monitoring-network.name
   }
 
   volumes {
@@ -123,7 +123,7 @@ resource "docker_container" "cubos-frontend" {
   }
 
   networks_advanced {
-    name = "monitoring-network"
+    name = docker_network.monitoring-network.name
   }
 
   ports {
